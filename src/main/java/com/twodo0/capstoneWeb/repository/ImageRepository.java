@@ -6,6 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ImageMetaRepository extends JpaRepository<ImageMeta, Long> {
-    //Page<ImageMeta> findAllByOrderByUploadedAtDesc(Pageable pageable);
+    Page<ImageMeta> findAllByOrderByUploadedAtDesc(Pageable pageable);
 }
 
