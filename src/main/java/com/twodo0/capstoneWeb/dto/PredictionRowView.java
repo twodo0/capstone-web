@@ -1,4 +1,11 @@
 package com.twodo0.capstoneWeb.dto;
 
-public record PredictionRowView() {
+import java.time.OffsetDateTime;
+
+public record PredictionRowView(
+        Long predictionId,
+        OffsetDateTime createdAt,
+        String imageUrl,
+        Long detectionCount
+) {
 }

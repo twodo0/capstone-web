@@ -10,7 +10,7 @@ import java.io.ByteArrayInputStream;
 
 @Component
 @NoArgsConstructor
-public class MinioObjectStorageAdapter implements ObjectStoragePort {
+public class storageAdapter implements ObjectStoragePort {
 
     private MinioClient minioClient;
 

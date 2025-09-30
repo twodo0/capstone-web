@@ -16,12 +16,16 @@ spring:
 
 ai:
   base-url: http://127.0.0.1:8000
-  endpoints:
+  timeout-seconds : 25
+  threshold-default : 0.5
+  endpoints: #FastAPI 입장에서의 엔드포인트
     predict: /predict
+    heatmap: /heatmaps/{heatmapId} # <- 임시 리소스 ID
 
 minio:
   endpoint: http://127.0.0.1:9000
   access-key: minioadmin
   secret-key: minioadmin
-  bucket: capstone
+  raw-bucket: capstone-raw # 원본 이미지 저장 버킷
+  heatmaps-bucket: capstone-heatmaps # 히트맵/프리뷰 저장 버킷
   presign-expire-seconds: 3600

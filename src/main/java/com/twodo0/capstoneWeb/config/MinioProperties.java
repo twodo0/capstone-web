@@ -4,18 +4,16 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+// !!-- 설정값 바인딩 --!!
 @Getter @Setter
-@ConfigurationProperties(prefix = "storage")
-public class StorageProperties {
+@ConfigurationProperties(prefix = "minio") // application.yml의 minio.*을 여기에 바인딩
+public class MinioProperties {
 
-    private String bucket; //capstone
-    private long presignTtlSeconds = 3600;
-
-    //** S3 전용 **//
-    private String region; // ap-northeast-2 등
-
-    //** MinIO 전용 **//
-    private String accesskey; //minioadmin
-    private String secretkey; // minioadmin
+    private String accesskey; //minio.accesskey
+    private String secretkey; // minio.secretkey
     private String endPoint; // http://localhost:9000
+    private String rawBucket;
+    private String heatmapBucket;
+
+    private int presignTtlSeconds = 3600; // minio.presign-expire-seconds (기본 3600)
 }

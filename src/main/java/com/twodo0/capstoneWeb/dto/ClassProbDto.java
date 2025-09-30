@@ -1,4 +1,6 @@
 package com.twodo0.capstoneWeb.dto;
 
-public enum ClassProbDto {
+import com.twodo0.capstoneWeb.domain.enums.DamageType;
+
+public record ClassProbDto(DamageType damageType, double prob) {
 }

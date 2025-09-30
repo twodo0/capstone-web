@@ -1,4 +1,4 @@
-package com.twodo0.capstoneWeb.adapter;
+package com.twodo0.capstoneWeb.adapter.presign;
 
 import com.twodo0.capstoneWeb.config.MinioProperties;
 import com.twodo0.capstoneWeb.port.PresignUrlPort;
@@ -19,7 +19,7 @@ public class MinioPresignAdapter implements PresignUrlPort {
 
 
     @Override
-    public String presignGet(String bucket, String key, java.time.Duration ttl) {
+    public String presignGet(String bucket, String key) {
         try {
             if (bucket == null || bucket.isBlank()) {
                 throw new IllegalArgumentException("bucket is null or blank");
@@ -28,7 +28,7 @@ public class MinioPresignAdapter implements PresignUrlPort {
                 throw new IllegalArgumentException("key is null or blank");
             }
 
-            int seconds = (int) Math.min(ttl.toSeconds(), props.getPresignTtlSeconds());
+            int seconds = props.getPresignTtlSeconds();
             return minio.getPresignedObjectUrl(
                     GetPresignedObjectUrlArgs.builder()
                             .method(Method.GET) // GET 만 허용
